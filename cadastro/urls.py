@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # Rota da página "Contatos"
-    path('contatos/', views.contato, name='contatos')
+    path('contato/', views.contato, name='contato')
 ]
