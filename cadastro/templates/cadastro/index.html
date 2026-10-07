@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends 'cadastro/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-</head>
+{% block titulo %}Cadastro{% endblock%}
 
-<body>
+{% block conteudo %}
+
+<section>
     <h1>Olá, {{ nome | upper }}!</h1>
     <p>Você tem {{ idade }} anos.</p>
     <h3>Minhas frutas:</h3>
@@ -15,7 +13,6 @@
         <li>{{ fruta }}</li>
         {% endfor %}
     </ul>
+</section>
 
-</body>
-
-</html>
+{% endblock %}

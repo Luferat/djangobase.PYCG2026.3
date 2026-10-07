@@ -4,9 +4,10 @@ from django.shortcuts import render
 def index(request):
 
     contexto = {
-        'nome': 'Joca',
+        "nome": "Joquinha",
         'idade': 30,
         'frutas': ['Maçã', 'Banana', 'Laranja', 'Uva', 'Cajá', 'Manga'],
+        'teste': 'Apenas um <strong>teste para</sctrong> testar'
     }
 
     return render(

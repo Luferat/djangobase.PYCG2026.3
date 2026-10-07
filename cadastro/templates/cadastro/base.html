@@ -8,6 +8,11 @@
 
 <body>
 
+    <header>
+        <h1>Cadastro</h1>
+    </header>
+    <hr>
+
     <nav>
         <a href="/">Início</a> |
         <a href="/contato/">Contato</a>
@@ -15,6 +20,9 @@
     <hr>
 
     <main>
+
+        {{ teste | striptags }}
+
         {% block conteudo %}{% endblock %}
     </main>
 
