@@ -22,4 +22,7 @@ urlpatterns = [
 
     # Rota para o aplicativo "cadastro"
     path('', include('cadastro.urls')),
+
+    # Gestão de contas de usuários
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
