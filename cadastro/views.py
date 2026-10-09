@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from cadastro.forms import PessoaForm
+from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
 
 
@@ -27,14 +27,23 @@ def index(request):
 
 def contato(request):
 
-    contexto = {
-        "nome": "Joquinha"
-    }
+    # Se o form está sendo enviado
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        # Exibe o formulário
+        form = ContatoForm()
 
     return render(
         request,
         'cadastro/contato.html',
-        contexto
+        {
+            'form': form,
+            'nome': 'Joquinha'
+        }
     )
 
 
