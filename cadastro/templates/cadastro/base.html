@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,17 @@
 <body>
 
     <header>
-        <h1>Cadastro</h1>
+        <h1>{{ dono }}</h1>
         <div>
-        {% if user.is_authenticated %}
-        {{ user.username }}
-        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit">Sair</button>
-        </form>
-        {% else %}
-        <a href="{% url 'login' %}">Entrar</a>
-        {% endif %}
+            {% if user.is_authenticated %}
+            {{ user.username }}
+            <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+            {% endif %}
         </div>
     </header>
     <hr>
@@ -29,17 +30,31 @@
     <nav>
         <a href="{% url 'index' %}">Início</a>
         <a href="{% url 'adicionar' %}">Nova Pessoa</a>
-        <a href="{% url 'contato' %}">Contato</a>        
+        <a href="{% url 'contato' %}">Contato</a>
     </nav>
     <hr>
 
     <main>
+
+        {# Mensagens entre páginas #}
+        {% if messages %}
+        <div class="alerts">
+            <ul>
+                {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         {% block conteudo %}{% endblock %}
     </main>
 
     <hr>
     <footer>
-        <div>&copy; 2026 {{ nome | default:"Visitante" }}</div>
+        <a href="{% url 'index' %}">Início</a>
+        <div>&copy; 2026 {{ dono | default:"Visitante" }}</div>
+        <a href="#top">Topo</a>
     </footer>
     <hr>
 

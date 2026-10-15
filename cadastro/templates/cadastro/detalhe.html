@@ -9,6 +9,14 @@
         <li><strong>ID:</strong> {{ pessoa.id }}</li>
         <li><strong>Email:</strong> {{ pessoa.email }}</li>
         <li><strong>Idade:</strong> {{ pessoa.idade }} anos</li>
+        <li><strong>Telefone(s):</strong>
+            <ul>
+                {% for telefone in pessoa.telefones.all %}
+                <li>{{ telefone.numero }}</li>
+                {% empty %}
+                <li>Nenhum telefone cadastrado.</li>
+                {% endfor %}
+            </ul>
     </ul>
     <a href="{% url 'editar' id=pessoa.id %}">Editar</a> |
     <a href="{% url 'deletar' id=pessoa.id %}">Apagar</a> |
